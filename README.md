@@ -1,3 +1,5 @@
 # MariHacks_2019_MSA
 
-No clue what we're doing yet
+Too Long, Didn't Listen
+
+A tool to make a student's life easier.
