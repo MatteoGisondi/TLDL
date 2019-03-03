@@ -1,7 +1,7 @@
 def split_text(string):
     '''default to 10 words per line'''
     string = string.split()
-    sentences = len((string) // 10) + 1)
+    sentences = (len(string) // 10) + 1
     lst = []
     for i in range(sentences):
         if i != sentences:
@@ -10,14 +10,22 @@ def split_text(string):
             lst.append(' '.join(string[(i * 10):]))
     return lst
 
-def write(text):
-    if text.isinstance(str):
-        text = split_text(text)
-    wfname = 'whole_text.txt'
-    write_file = open(wfname, 'w')
-    for line in text:
-        write_file.write(line)
-    write_file.close()
+def max_file_number(PATH):
+    import os
+    folder = os.listdir(os.fsencode(PATH))
+    print(folder)
+    fnumbers = [str(file) for file in folder]
+    print(fnumbers)
+    if fnumbers:
+        return max(fnumbers + 1)
+    return '1'
 
-if __name__ == '__main__':
-    print(split_text('The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog The quick brown fox jumped over the lazy dog'))
+def write(text):
+    if isinstance(text, str):
+        text = split_text(text)
+    wfname, ext = 'whole_text', '.txt'
+    PATH = '.\\whole_texts\\'
+    write_file = open(PATH + wfname + '_' + max_file_number(PATH) + ext, 'w')
+    for line in text:
+        write_file.write(line + '\n')
+    write_file.close()
