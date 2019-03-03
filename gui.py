@@ -1,7 +1,8 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit,  QFileDialog
+from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit,  QFileDialog, QVBoxLayout , QGroupBox, QDialog , QHBoxLayout, QPushButton
 from PyQt5.QtGui import QIcon
 from summer import summer
+from notepad import MainWindow
 
 class App(QWidget):
 
@@ -26,6 +27,15 @@ class App(QWidget):
             #self.getName()
             self.getRatio()
             self.saveFileDialog()
+        elif self.method == 'TextInput':
+            self.startTextEditor()
+
+            self.openFileNameDialog()
+#            print('OFND')
+            self.getRatio()
+#            print('ratioq')
+            self.saveFileDialog()
+
         else:
             print('TODO')
 
@@ -37,6 +47,8 @@ class App(QWidget):
 #        name, okPressed = QInputDialog.getText(self, "File Name","FileName + extension: ", QLineEdit.Normal, "")
 #        if okPressed and name != '':
 #            self.name = name
+
+
 
     def getRatio(self):
         ratio, okPressed = QInputDialog.getItem(self, "Get Ratio","Ratio :", self.ratioItems, 0, False)
@@ -62,6 +74,15 @@ class App(QWidget):
         saveName, _ = QFileDialog.getSaveFileName(self,"QFileDialog.getSaveFileName()","","All Files (*);;Text Files (*.txt)", options=options)
         if saveName:
             self.saveName = saveName
+
+    def startTextEditor(self):
+        app = QApplication(sys.argv)
+        app.setApplicationName("Edit your file before inputting...")
+
+        window = MainWindow()
+        print('exec done')
+        app.exec_()
+        print('exec done2')
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
