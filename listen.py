@@ -26,5 +26,14 @@ def mic():
             break
 
 if __name__ == '__main__':
-    # file('harvard.wav')
-    mic()
+    while True:
+        inp = input('f or m: ')
+        if inp == 'f':
+            file(input('file name: '))
+        elif inp == 'm':
+            mic()
+        else:
+            print('invalid')
+
+    # to import from elsewhere, import filename
+    # then run function file(fname) or mic()
