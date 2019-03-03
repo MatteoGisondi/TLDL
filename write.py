@@ -11,14 +11,20 @@ def split_text(string):
     return lst
 
 def max_file_number(PATH):
-    import os
-    folder = os.listdir(os.fsencode(PATH))
-    print(folder)
-    fnumbers = [str(file) for file in folder]
-    print(fnumbers)
-    if fnumbers:
-        return max(fnumbers + 1)
-    return '1'
+    from os import listdir
+    folder = listdir(PATH)
+    fnumbers = []
+    for file in folder:
+        try:
+            start = file.rindex('_')
+            end = file.rindex('.')
+            fnumbers.append(int(file[start + 1:end]))
+        except:
+            pass
+    try:
+        return str(max(fnumbers) + 1)
+    except:
+        return '1'
 
 def write(text):
     if isinstance(text, str):
