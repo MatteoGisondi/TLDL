@@ -8,19 +8,19 @@ microphone = sr.Microphone()
 while True:
     usr = input('file or microphone (x to exit): ').lower()
     if usr == 'file':
-        file = input('file name: ')
+        fname = input('file name: ')
         try:
-            speech = recognize_speech(recognizer, microphone, fname=file)
+            speech = recognize_speech(sr, recognizer, microphone, fname)
             write(speech)
         except FileNotFoundError:
             print('file {} does not exist'.format(fname))
     elif usr == 'mic':
         speech = []
         while True:
-            phrase = recognize_speech(recognizer, microphone)
+            phrase = recognize_speech(sr, recognizer, microphone)
             if phrase:
                 speech.append(phrase)
-            write speech
+            write(speech)
     elif usr == 'x':
         exit()
     else:
