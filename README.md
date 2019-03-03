@@ -4,6 +4,9 @@ Too Long, Didn't Listen
 
 A tool to make a student's life easier.
 
+![Image of Yaktocat](https://github.com/MatteoGisondi/TLDL/blob/master/TL%3BDL.png)
+
+
 ## Required Packages:
 __speechrecognition__
 
@@ -23,8 +26,8 @@ pip install [PackageName]
 ### TO DO
 - [ ] GUI
 > - [X] GUI for getting filename
-> - [ ] GUI for recording
-> - [ ] GUI for Inputting Text Manually and naming the output file
+> - [X] GUI for recording
+> - [X] GUI for Inputting Text Manually and naming the output file
 > - [ ] GUI for all of this 
-- [ ] Connection Between Recorder and The Summarizer
+- [X] Connection Between Recorder and The Summarizer
 - [ ] Webpages Support
