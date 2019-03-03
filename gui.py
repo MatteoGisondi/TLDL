@@ -1,9 +1,8 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit,  QFileDialog, QVBoxLayout , QGroupBox, QDialog , QHBoxLayout, QPushButton
 from PyQt5.QtGui import QIcon
-from summer import summer
+from summer import summer, dirty_summer
 from notepad import MainWindow
-
 class App(QWidget):
 
     ratioItems = [str(ratio / 100) for ratio in range(1,101)]
@@ -27,26 +26,25 @@ class App(QWidget):
             #self.getName()
             self.getRatio()
             self.saveFileDialog()
+
+            self.show()
+
+            summer(self.name,self.ratio,self.saveName)
+
         elif self.method == 'TextInput':
-            self.startTextEditor()
-
-            self.openFileNameDialog()
-#            print('OFND')
+            self.getText()
             self.getRatio()
-#            print('ratioq')
             self.saveFileDialog()
-
+            dirty_summer(self.text,self.ratio,self.saveName )
         else:
             print('TODO')
 
-        self.show()
 
-        summer(self.name,self.ratio,self.saveName)
 
-#    def getName(self):
-#        name, okPressed = QInputDialog.getText(self, "File Name","FileName + extension: ", QLineEdit.Normal, "")
-#        if okPressed and name != '':
-#            self.name = name
+    def getText(self):
+        text, okPressed = QInputDialog.getText(self, "Copy You Text","Paste your aticle here: ", QLineEdit.Normal, "")
+        if okPressed and text != '':
+            self.text = text
 
 
 
@@ -60,6 +58,7 @@ class App(QWidget):
         method, okPressed = QInputDialog.getItem(self, "Get input method","Input Method: ", methods, 0, False)
         if okPressed:
             self.method = method
+
 
     def openFileNameDialog(self):
         options = QFileDialog.Options()
