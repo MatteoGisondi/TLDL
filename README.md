@@ -13,6 +13,8 @@ __pyaudio__
 
 __gensim_sum_ext__
 
+__PyQt5__
+
 ```
 pip install [PackageName]
 ```
