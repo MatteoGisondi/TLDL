@@ -1,4 +1,4 @@
-# TLDL
+# TL;DL
 
 Too Long, Didn't Listen
 
