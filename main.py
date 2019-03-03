@@ -1,10 +1,19 @@
 import time
 import speech_recognition as sr
 
-def recognize(recognizer, audio):
+def recognize_speech(recognizer, audio_source, fname=None):
+    '''return a string of recognized speech from microphone audio'''
+    if fname:
+        audio_source = sr.AudioFile(fname)
+    with audio_source as source:
+        # adjust recognizer for ambient noise
+        recognizer.adjust_for_ambient_noise(source)
+        if fname:
+            audio = recognizer.record(source, duration=3)
+        audio = recognizer.listen(source)
     # try recognizing the speech in the recording
     try:
-        response = recognizer.recognize_google(audio)
+        response = recognizer.recognize_sphinx(audio)
     except sr.RequestError:
         # API was unreachable
         raise Exception('API unavailable')
@@ -13,32 +22,25 @@ def recognize(recognizer, audio):
         response = 'Unable to recognize speech'
     return response
 
-def recognize_speech(recognizer, audio_source):
-    '''return a string of recognized speech from microphone audio'''
-    with audio_source as source:
-        # adjust recognizer for ambient noise
-        recognizer.adjust_for_ambient_noise(source)
-        # start recording
-        audio = recognizer.listen(source, timeout=3)
-    response = recognize(recognizer, audio)
-
 if __name__ == '__main__':
     recognizer = sr.Recognizer()
     microphone = sr.Microphone()
 
-    usr = input('File or microphone (x to exit): ').lower()
+    usr = input('file or microphone (x to exit): ').lower()
     while True:
         if usr == 'file':
-            fname = input('file name: ')
+            file = input('file name: ')
             try:
-                f = open(fname)
-                recognize_speech_from_file(f)
+                phrase = recognize_speech(recognizer, microphone, fname=file)
+                print(phrase)
             except:
-                raise FileNotFoundError('file {} does not exist'.format(fname))
+                print('file {} does not exist'.format(fname))
         elif usr == 'mic':
+            speech = []
             while True:
-                speech = recognize_speech(recognizer, microphone)
-                print(speech)
+                phrase = recognize_speech(recognizer, microphone)
+                speech.append(phrase)
+                print(*speech)
         elif usr == 'x':
             exit()
         else:
