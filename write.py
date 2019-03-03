@@ -29,7 +29,7 @@ def max_file_number(PATH):
 def write(text):
     if isinstance(text, str):
         text = split_text(text)
-    wfname, ext = 'whole_text', '.txt'
+    wfname, ext = 'text', '.txt'
     PATH = '.\\whole_texts\\'
     write_file = open(PATH + wfname + '_' + max_file_number(PATH) + ext, 'w')
     for line in text:
