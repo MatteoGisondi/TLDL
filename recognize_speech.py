@@ -1,7 +1,7 @@
-def recognize_speech(recognizer, audio_source, fname=None):
+def recognize_speech(sr, recognizer, audio_source, fname=None):
     '''return a string of recognized speech from microphone audio'''
     if fname:
-        audio_source = sr.AudioFile(fname)
+        audio_source = sr.AudioFile('.\\audio_files\\' + fname)
     with audio_source as source:
         # adjust recognizer for ambient noise
         recognizer.adjust_for_ambient_noise(source)
@@ -10,8 +10,10 @@ def recognize_speech(recognizer, audio_source, fname=None):
         else:
             audio = recognizer.listen(source)
     # try recognizing the speech in the recording
+    use_sphinx = False
     try:
-        # pocketsphinx is a requirement
+        if use_sphinx:
+            response = recognizer.recognize_sphinx(audio)
         response = recognizer.recognize_google(audio)
     except sr.RequestError:
         # API was unreachable
