@@ -1,16 +1,16 @@
 import speech_recognition as sr
 from recognize_speech import recognize_speech
-from write import write
-def file(fname):
+from write import writeS
+def file(fname,path):
     recognizer = sr.Recognizer()
     microphone = sr.Microphone()
     try:
         speech = recognize_speech(sr, recognizer, microphone, fname)
-        return write(speech)
+        return writeS(speech , path)
     except FileNotFoundError:
         return 'file {} does not exist'.format(fname)
 
-def mic():
+def mic(path):
     recognizer = sr.Recognizer()
     microphone = sr.Microphone()
     speech = ''
@@ -22,7 +22,7 @@ def mic():
                 print(phrase)
         except KeyboardInterrupt:
             if speech:
-                write(speech)
+                writeS(speech, path)
             break
 
 if __name__ == '__main__':

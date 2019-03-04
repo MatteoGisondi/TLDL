@@ -3,6 +3,8 @@ from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit,  QFi
 from PyQt5.QtGui import QIcon
 from summer import summer, dirty_summer
 from notepad import MainWindow
+import listen as ls
+
 class App(QWidget):
 
     ratioItems = [str(ratio / 100) for ratio in range(1,101)]
@@ -35,17 +37,32 @@ class App(QWidget):
             self.getText()
             self.getRatio()
             self.saveFileDialog()
+
+            self.show()
+
             dirty_summer(self.text,self.ratio,self.saveName )
+
         else:
-            print('TODO')
+            self.getAudioMethod()
+            if self.aMethod == "By Filename":
 
-
+                self.openFileNameDialog()
+                self.saveFileDialog()
+                ls.file(self.name,self.saveName)
+            else:
+                print('MAke the other part work first')
 
     def getText(self):
         text, okPressed = QInputDialog.getText(self, "Copy You Text","Paste your aticle here: ", QLineEdit.Normal, "")
         if okPressed and text != '':
             self.text = text
 
+
+    def getAudioMethod(self):
+        aMethods = ('By Filename','Live Record')
+        aMethod, okPressed = QInputDialog.getItem(self, "Audio Method", "Choose the type of input:", aMethods , 0 , False)
+        if okPressed:
+            self.aMethod = aMethod
 
 
     def getRatio(self):

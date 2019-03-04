@@ -1,7 +1,7 @@
 def recognize_speech(sr, recognizer, audio_source, fname=None):
     '''return a string of recognized speech from microphone audio'''
     if fname:
-        audio_source = sr.AudioFile('.\\audio_files\\' + fname)
+        audio_source = sr.AudioFile(fname)
     with audio_source as source:
         # adjust recognizer for ambient noise
         recognizer.adjust_for_ambient_noise(source)

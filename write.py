@@ -26,12 +26,13 @@ def max_file_number(PATH):
     except:
         return '1'
 
-def write(text):
+def writeS(text , path):
     if isinstance(text, str):
         text = split_text(text)
-    wfname, ext = 'text', '.txt'
-    PATH = '.\\whole_texts\\'
-    write_file = open(PATH + wfname + '_' + max_file_number(PATH) + ext, 'w')
+    #wfname, ext = 'text', '.txt'
+#    PATH = '.\\whole_texts\\'
+# PATH + wfname + '_' + max_file_number(PATH) + ext
+    write_file = open(path, 'w')
     for line in text:
         write_file.write(line + '\n')
     write_file.close()
