@@ -8,21 +8,13 @@ A tool to make a student's life easier.
 
 
 ## Required Packages:
-__speechrecognition__
-
-__pyaudio__
-
-__gensim_sum_ext__
-
-__PyQt5__
+__speechrecognition__ __pyaudio__ __gensim_sum_ext__ __PyQt5__
 
 ## For Running Locally (Without Using Google API) (Not Recommended)
-
 __pocketsphinx__
-```
+```bash
 pip install [PackageName]
 ```
-
 ## TO DO
 ### GUI Rework - Make it qt! ###
  - [ ] GUI for getting filename
