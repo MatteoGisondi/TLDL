@@ -8,15 +8,13 @@ A tool to make a student's life easier.
 
 
 ## Required Packages:
-__speechrecognition__ __pyaudio__ __gensim_sum_ext__ __PyQt5__
+`pip install speechrecognition pyaudio gensim_sum_ext PyQt5`
 
 ## For Running Locally (Without Using Google API) (Not Recommended)
-__pocketsphinx__
-```bash
-pip install [PackageName]
-```
+`pip install pocketsphinx`
+
 ## TO DO
-### GUI Rework - Make it qt! ###
+### GUI Rework - Make it qter! ###
  - [ ] GUI for getting filename
  - [ ] GUI for recording
  - [ ] GUI for Inputting Text Manually and naming the output file
@@ -31,7 +29,7 @@ pip install [PackageName]
  - [ ] Faster and more responsive audio to text convertor
  - [ ] Webpages Support (url direct input)
  - [ ] Video-to-Audio-to-Text Convertor ( or a - [ ] Youtube video-to-text convertor )
- - [ ] More features?
+ - [ ] More features? Doggo pictures?
  
 ## Interested in Helping?
 - Please make an issue and talk to us about your ideas and we will contact you as soon as possible!
