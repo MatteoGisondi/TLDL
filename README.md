@@ -1,16 +1,20 @@
 # TL;DL
 
-Too Long, Didn't Listen
+## Too Long, Didn't Listen
 
-A tool to make a student's life easier.
+    A tool to make a student's life easier.
 
-![TL;DL LOGO](https://github.com/MatteoGisondi/TLDL/blob/master/TL%3BDL(1).png)
+![TL;DL LOGO](static/icon.png)
 
+
+## Prerequisites:
+
+`python<=3.6.13`
 
 ## Required Packages:
-`pip install speechrecognition pyaudio gensim_sum_ext PyQt5`
+`pip install -r requirements.txt`
 
-## For Running Locally (Without Using Google API) (Not Recommended)
+## For Running Locally (Without Using Google API) (Not Recommended - Not tested)
 `pip install pocketsphinx`
 
 ## TO DO
@@ -18,7 +22,7 @@ A tool to make a student's life easier.
  - [ ] GUI for getting filename
  - [ ] GUI for recording
  - [ ] GUI for Inputting Text Manually and naming the output file
- - [ ] GUI for all of above! 
+ - [ ] GUI for all of above!
 ### New Summarizer Algorithm ###
  - [ ] Make it trainable with each user input
  - [ ] Get user input on how good the input is
@@ -30,6 +34,6 @@ A tool to make a student's life easier.
  - [ ] Webpages Support (url direct input)
  - [ ] Video-to-Audio-to-Text Convertor ( or a - [ ] Youtube video-to-text convertor )
  - [ ] More features? Doggo pictures?
- 
+
 ## Interested in Helping?
 - Please make an issue and talk to us about your ideas and we will contact you as soon as possible!

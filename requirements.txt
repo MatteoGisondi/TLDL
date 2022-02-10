@@ -1,0 +1,4 @@
+speechrecognition
+pyaudio
+gensim==3.8.3
+PyQt5
